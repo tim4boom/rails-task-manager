@@ -2,7 +2,11 @@
 
 <ul>
   <% @tasks.each do |task| %>
-    <li style="list-style: none"><input type="checkbox"> <%= link_to task.title, task_path(task) %>..........<%= link_to 'Delete!', task, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+    <% if task.completed %>
+      <li style="list-style: none"><input type="checkbox" checked> <%= link_to task.title, task_path(task) %>..........<%= link_to 'Delete!', task, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+    <% else %>
+      <li style="list-style: none"><input type="checkbox"> <%= link_to task.title, task_path(task) %>..........<%= link_to 'Delete!', task, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+    <% end %>
   <% end %>
 </ul>
 
